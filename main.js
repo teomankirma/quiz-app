@@ -19,21 +19,23 @@ const highScoresPageGoBack = document.querySelector(
   "#high-scores-page-go-back"
 );
 
-// Options
+// Input Fields
+const numberOfQuestionsInput = document.querySelector("#number-of-questions");
 const categoryOptions = document.querySelector("#category");
 const difficultyOptions = document.querySelector("#difficulty");
 const typeOptions = document.querySelector("#type");
 
 categoryOptions.innerHTML = CATEGORIES.map(
-  (category) => `<option value="${category}">${category}</option>`
+  (category) => `<option value="${category.name}">${category.name}</option>`
 ).join("");
 
 difficultyOptions.innerHTML = DIFFICULTIES.map(
-  (difficulty) => `<option value="${difficulty}">${difficulty}</option>`
+  (difficulty) =>
+    `<option value="${difficulty.name}">${difficulty.name}</option>`
 ).join("");
 
 typeOptions.innerHTML = TYPES.map(
-  (type) => `<option value="${type}">${type}</option>`
+  (type) => `<option value="${type.name}">${type.name}</option>`
 ).join("");
 
 // Event Listeners
@@ -48,8 +50,34 @@ highScoresButton.addEventListener("click", () => {
   highScoresPage.classList.remove("hidden");
 });
 
-playGameButton.addEventListener("click", (event) => {
+playGameButton.addEventListener("click", async (event) => {
   event.preventDefault();
+  const numberOfQuestions = numberOfQuestionsInput.value;
+  let url = `https://opentdb.com/api.php?amount=${numberOfQuestions}`;
+
+  const selectedCategory = CATEGORIES.find(
+    (category) => category.name === categoryOptions.value
+  );
+
+  const selectedDifficulty = DIFFICULTIES.find(
+    (difficulty) => difficulty.name === difficultyOptions.value
+  );
+
+  const selectedType = TYPES.find((type) => type.name === typeOptions.value);
+
+  if (selectedCategory.value) {
+    url += `&category=${selectedCategory.value}`;
+  }
+
+  if (selectedDifficulty.value)
+    url += `&difficulty=${selectedDifficulty.value}`;
+
+  if (selectedType.value) {
+    url += `&type=${selectedType.value}`;
+  }
+
+  // const questions = await fetch(url);
+
   mainPage.classList.add("hidden");
   questionsPage.classList.remove("hidden");
 });
