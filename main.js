@@ -1,4 +1,5 @@
 import "./style.css";
+import { CATEGORIES, DIFFICULTIES, TYPES } from "./src/constants";
 
 // Pages
 const homePage = document.querySelector("#home-page");
@@ -17,6 +18,25 @@ const mainPageGoBack = document.querySelector("#main-page-go-back");
 const highScoresPageGoBack = document.querySelector(
   "#high-scores-page-go-back"
 );
+
+// Options
+const categoryOptions = document.querySelector("#category");
+const difficultyOptions = document.querySelector("#difficulty");
+const typeOptions = document.querySelector("#type");
+
+categoryOptions.innerHTML = CATEGORIES.map(
+  (category) => `<option value="${category}">${category}</option>`
+).join("");
+
+difficultyOptions.innerHTML = DIFFICULTIES.map(
+  (difficulty) => `<option value="${difficulty}">${difficulty}</option>`
+).join("");
+
+typeOptions.innerHTML = TYPES.map(
+  (type) => `<option value="${type}">${type}</option>`
+).join("");
+
+// Event Listeners
 
 startButton.addEventListener("click", () => {
   homePage.classList.add("hidden");
