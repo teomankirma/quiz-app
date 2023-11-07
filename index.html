@@ -9,7 +9,61 @@
 </head>
 
 <body>
-  <div id="app"></div>
+  <div id="app">
+    <div id="home-page">
+      <h1>Quiz App</h1>
+      <button id="start-btn">Start</button>
+      <button id="high-scores-btn">High Scores</button>
+    </div>
+    <div id="main-page" class="hidden">
+      <button id="main-page-go-back">Go Back</button>
+      <h1>Welcome</h1>
+      <form>
+        <label for="number-of-questions">Number of Questions:</label>
+        <input id="number-of-questions" type="number" />
+        <br />
+        <label for="category">Select Category:</label>
+        <select id="category">
+          <option>eqweqw</option>
+        </select>
+        <br />
+        <label for="difficulty">Select Difficulty:</label>
+        <select id="difficulty">
+          <option>eqweqw</option>
+        </select>
+        <br />
+        <label for="type">Select Type:</label>
+        <select id="type">
+          <option>eqweqw</option>
+        </select>
+        <br />
+        <input id="play-game-btn" type="submit" value="Play Game" />
+      </form>
+    </div>
+    <div id="questions" class="hidden">
+      <h3>Is this a question?</h3>
+      <button>A) Yes</button>
+      <button>B) No</button>
+      <button>C) Idk</button>
+      <button>D) Idc</button>
+    </div>
+    <div id="high-scores" class="hidden">
+      <button id="high-scores-page-go-back">Go Back</button>
+      <h2>Current Leaderboard</h2>
+      <ul>
+        <li>Player 1 - 100</li>
+        <li>Player 2 - 90</li>
+        <li>Player 3 - 80</li>
+        <li>Player 4 - 70</li>
+        <li>Player 5 - 60</li>
+        <li>Player 6 - 50</li>
+        <li>Player 7 - 40</li>
+        <li>Player 8 - 30</li>
+        <li>Player 9 - 20</li>
+        <li>Player 10 - 10</li>
+      </ul>
+    </div>
+  </div>
   <script type="module" src="/main.js"></script>
 </body>
 
