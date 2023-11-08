@@ -171,6 +171,15 @@ highScoresButton.addEventListener("click", () => {
 
 playGameButton.addEventListener("click", async (event) => {
   event.preventDefault();
+
+  if (!username.value || !numberOfQuestionsInput.value) {
+    alert("Please enter a username and number of questions");
+    return;
+  } else if (numberOfQuestionsInput.value < 1) {
+    alert("Please enter a number of questions greater than 0");
+    return;
+  }
+
   const numberOfQuestions = numberOfQuestionsInput.value;
   let url = `https://opentdb.com/api.php?amount=${numberOfQuestions}`;
 
