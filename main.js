@@ -6,6 +6,7 @@ const homePage = document.querySelector("#home-page");
 const mainPage = document.querySelector("#main-page");
 const questionsPage = document.querySelector("#questions");
 const highScoresPage = document.querySelector("#high-scores");
+const resultsPage = document.querySelector("#results");
 
 // Buttons
 const startButton = document.querySelector("#start-btn");
@@ -38,6 +39,66 @@ typeOptions.innerHTML = TYPES.map(
   (type) => `<option value="${type.name}">${type.name}</option>`
 ).join("");
 
+// Functions
+function renderQuestion(index) {
+  if (index >= quizQuestions.length) {
+    // No more questions, handle end of quiz here
+    questionsPage.classList.add("hidden");
+    resultsPage.classList.remove("hidden");
+
+    const correctCount = document.createElement("p");
+    correctCount.textContent = `Correct answers: ${correctAnswers}`; // replace correctAnswersCount with your variable
+    resultsPage.appendChild(correctCount);
+
+    const wrongCount = document.createElement("p");
+    wrongCount.textContent = `Wrong answers: ${wrongAnswers}`; // replace wrongAnswersCount with your variable
+    resultsPage.appendChild(wrongCount);
+    return;
+  }
+
+  const questionDiv = document.getElementById("questions");
+  questionDiv.innerHTML = "";
+
+  const currentQuestion = quizQuestions[index];
+  const questionText = document.createElement("h2");
+  questionText.textContent = currentQuestion.question;
+  questionDiv.appendChild(questionText);
+
+  const answers =
+    currentQuestion.type === "multiple"
+      ? [...currentQuestion.incorrectAnswers, currentQuestion.correctAnswer]
+      : ["True", "False"];
+  answers.forEach((answer) => {
+    const answerButton = document.createElement("button");
+    answerButton.textContent = answer;
+    questionDiv.appendChild(answerButton);
+
+    answerButton.addEventListener(
+      "click",
+      ((currentIndex) => {
+        return () => {
+          if (answerButton.textContent === currentQuestion.correctAnswer) {
+            // handle correct answer
+            correctAnswers++;
+          } else {
+            // handle incorrect answer
+            wrongAnswers++;
+          }
+
+          // render the next question
+          renderQuestion(currentIndex + 1);
+        };
+      })(index)
+    );
+  });
+}
+
+// Global Variables
+
+let quizQuestions = [];
+let correctAnswers = 0;
+let wrongAnswers = 0;
+
 // Event Listeners
 
 startButton.addEventListener("click", () => {
@@ -49,8 +110,6 @@ highScoresButton.addEventListener("click", () => {
   homePage.classList.add("hidden");
   highScoresPage.classList.remove("hidden");
 });
-
-let quizQuestions = [];
 
 playGameButton.addEventListener("click", async (event) => {
   event.preventDefault();
@@ -103,48 +162,7 @@ highScoresPageGoBack.addEventListener("click", () => {
   homePage.classList.remove("hidden");
 });
 
-restartGameButton.addEventListener("click", () => {
-  questionsPage.classList.add("hidden");
-  mainPage.classList.remove("hidden");
-});
-
-function renderQuestion(index) {
-  if (index >= quizQuestions.length) {
-    // No more questions, handle end of quiz here
-    return;
-  }
-
-  const questionDiv = document.getElementById("questions");
-  questionDiv.innerHTML = "";
-
-  const currentQuestion = quizQuestions[index];
-  const questionText = document.createElement("h2");
-  questionText.textContent = currentQuestion.question;
-  questionDiv.appendChild(questionText);
-
-  const answers =
-    currentQuestion.type === "multiple"
-      ? [...currentQuestion.incorrectAnswers, currentQuestion.correctAnswer]
-      : ["True", "False"];
-  answers.forEach((answer) => {
-    const answerButton = document.createElement("button");
-    answerButton.textContent = answer;
-    questionDiv.appendChild(answerButton);
-
-    answerButton.addEventListener(
-      "click",
-      ((currentIndex) => {
-        return () => {
-          if (answerButton.textContent === currentQuestion.correctAnswer) {
-            // handle correct answer
-          } else {
-            // handle incorrect answer
-          }
-
-          // render the next question
-          renderQuestion(currentIndex + 1);
-        };
-      })(index)
-    );
-  });
-}
+// restartGameButton.addEventListener("click", () => {
+//   questionsPage.classList.add("hidden");
+//   mainPage.classList.remove("hidden");
+// });
