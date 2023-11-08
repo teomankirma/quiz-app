@@ -147,6 +147,12 @@ let wrongAnswers = 0;
 startButton.addEventListener("click", () => {
   homePage.classList.add("hidden");
   mainPage.classList.remove("hidden");
+
+  username.value = "";
+  numberOfQuestionsInput.value = "";
+  categoryOptions.value = CATEGORIES[0].name;
+  difficultyOptions.value = DIFFICULTIES[0].name;
+  typeOptions.value = TYPES[0].name;
 });
 
 highScoresButton.addEventListener("click", () => {
@@ -175,8 +181,11 @@ playGameButton.addEventListener("click", async (event) => {
   if (!username.value || !numberOfQuestionsInput.value) {
     alert("Please enter a username and number of questions");
     return;
-  } else if (numberOfQuestionsInput.value < 1) {
-    alert("Please enter a number of questions greater than 0");
+  } else if (
+    numberOfQuestionsInput.value < 1 ||
+    numberOfQuestionsInput.value > 50
+  ) {
+    alert("Please enter a number of questions between 1 and 50");
     return;
   }
 
