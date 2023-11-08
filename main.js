@@ -50,6 +50,8 @@ highScoresButton.addEventListener("click", () => {
   highScoresPage.classList.remove("hidden");
 });
 
+let quizQuestions = [];
+
 playGameButton.addEventListener("click", async (event) => {
   event.preventDefault();
   const numberOfQuestions = numberOfQuestionsInput.value;
@@ -76,7 +78,16 @@ playGameButton.addEventListener("click", async (event) => {
     url += `&type=${selectedType.value}`;
   }
 
-  // const questions = await fetch(url);
+  const response = await fetch(url);
+  const { results } = await response.json();
+  quizQuestions = results.map((result) => ({
+    question: result.question,
+    correctAnswer: result.correct_answer,
+    incorrectAnswers: result.incorrect_answers,
+    type: result.type,
+  }));
+
+  renderQuestion(0);
 
   mainPage.classList.add("hidden");
   questionsPage.classList.remove("hidden");
@@ -96,3 +107,44 @@ restartGameButton.addEventListener("click", () => {
   questionsPage.classList.add("hidden");
   mainPage.classList.remove("hidden");
 });
+
+function renderQuestion(index) {
+  if (index >= quizQuestions.length) {
+    // No more questions, handle end of quiz here
+    return;
+  }
+
+  const questionDiv = document.getElementById("questions");
+  questionDiv.innerHTML = "";
+
+  const currentQuestion = quizQuestions[index];
+  const questionText = document.createElement("h2");
+  questionText.textContent = currentQuestion.question;
+  questionDiv.appendChild(questionText);
+
+  const answers =
+    currentQuestion.type === "multiple"
+      ? [...currentQuestion.incorrectAnswers, currentQuestion.correctAnswer]
+      : ["True", "False"];
+  answers.forEach((answer) => {
+    const answerButton = document.createElement("button");
+    answerButton.textContent = answer;
+    questionDiv.appendChild(answerButton);
+
+    answerButton.addEventListener(
+      "click",
+      ((currentIndex) => {
+        return () => {
+          if (answerButton.textContent === currentQuestion.correctAnswer) {
+            // handle correct answer
+          } else {
+            // handle incorrect answer
+          }
+
+          // render the next question
+          renderQuestion(currentIndex + 1);
+        };
+      })(index)
+    );
+  });
+}
