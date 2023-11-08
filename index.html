@@ -19,6 +19,9 @@
       <button id="main-page-go-back">Go Back</button>
       <h1>Welcome</h1>
       <form>
+        <label for="player-name">Enter Your Name:</label>
+        <input id="player-name" type="text" />
+        <br />
         <label for="number-of-questions">Number of Questions:</label>
         <input id="number-of-questions" type="number" />
         <br />
@@ -39,18 +42,7 @@
     <div id="high-scores" class="hidden">
       <button id="high-scores-page-go-back">Go Back</button>
       <h2>Current Leaderboard</h2>
-      <ul>
-        <li>Player 1 - 100</li>
-        <li>Player 2 - 90</li>
-        <li>Player 3 - 80</li>
-        <li>Player 4 - 70</li>
-        <li>Player 5 - 60</li>
-        <li>Player 6 - 50</li>
-        <li>Player 7 - 40</li>
-        <li>Player 8 - 30</li>
-        <li>Player 9 - 20</li>
-        <li>Player 10 - 10</li>
-      </ul>
+      <ol id="high-scores-list"></ol>
     </div>
   </div>
   <script type="module" src="/main.js"></script>

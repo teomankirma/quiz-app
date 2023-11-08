@@ -1,5 +1,5 @@
 import "./style.css";
-import { CATEGORIES, DIFFICULTIES, TYPES } from "./src/constants";
+import { CATEGORIES, DIFFICULTIES, TYPES, HIGH_SCORES } from "./src/constants";
 
 // Pages
 const homePage = document.querySelector("#home-page");
@@ -21,6 +21,7 @@ const highScoresPageGoBack = document.querySelector(
 );
 
 // Input Fields
+const username = document.querySelector("#player-name");
 const numberOfQuestionsInput = document.querySelector("#number-of-questions");
 const categoryOptions = document.querySelector("#category");
 const difficultyOptions = document.querySelector("#difficulty");
@@ -43,16 +44,58 @@ typeOptions.innerHTML = TYPES.map(
 function renderQuestion(index) {
   if (index >= quizQuestions.length) {
     // No more questions, handle end of quiz here
+    resultsPage.innerHTML = "";
+
     questionsPage.classList.add("hidden");
     resultsPage.classList.remove("hidden");
 
+    const percentage = Math.round(
+      (correctAnswers / quizQuestions.length) * 100
+    );
+
+    const endOfQuizText = document.createElement("h2");
+
+    if (percentage >= 70) {
+      endOfQuizText.textContent =
+        "Excellent work! You've mastered this material!";
+    } else if (percentage >= 50) {
+      endOfQuizText.textContent = "Good job! You've passed the quiz!";
+    } else {
+      endOfQuizText.textContent =
+        "Don't worry, keep practicing and you'll get there!";
+    }
+    resultsPage.appendChild(endOfQuizText);
+
+    const userScore = document.createElement("h3");
+    userScore.textContent = `Your score: ${percentage}%`;
+    resultsPage.appendChild(userScore);
+
     const correctCount = document.createElement("p");
-    correctCount.textContent = `Correct answers: ${correctAnswers}`; // replace correctAnswersCount with your variable
+    correctCount.textContent = `Correct answers: ${correctAnswers}`;
     resultsPage.appendChild(correctCount);
 
     const wrongCount = document.createElement("p");
-    wrongCount.textContent = `Wrong answers: ${wrongAnswers}`; // replace wrongAnswersCount with your variable
+    wrongCount.textContent = `Wrong answers: ${wrongAnswers}`;
     resultsPage.appendChild(wrongCount);
+
+    HIGH_SCORES.push({
+      username: username.value,
+      score: percentage,
+    });
+
+    HIGH_SCORES.sort((a, b) => b.score - a.score);
+
+    correctAnswers = 0;
+    wrongAnswers = 0;
+
+    const goHomeButton = document.createElement("button");
+    goHomeButton.textContent = "Go Home";
+    goHomeButton.addEventListener("click", () => {
+      resultsPage.classList.add("hidden");
+      homePage.classList.remove("hidden");
+    });
+    resultsPage.appendChild(goHomeButton);
+
     return;
   }
 
@@ -109,6 +152,21 @@ startButton.addEventListener("click", () => {
 highScoresButton.addEventListener("click", () => {
   homePage.classList.add("hidden");
   highScoresPage.classList.remove("hidden");
+
+  const highScoresList = document.querySelector("#high-scores-list");
+  highScoresList.innerHTML = "";
+
+  if (HIGH_SCORES.length === 0) {
+    const noScores = document.createElement("p");
+    noScores.textContent = "No scores yet!";
+    highScoresList.appendChild(noScores);
+  }
+
+  HIGH_SCORES.forEach((score) => {
+    const scoreItem = document.createElement("li");
+    scoreItem.textContent = `${score.username}: ${score.score}%`;
+    highScoresList.appendChild(scoreItem);
+  });
 });
 
 playGameButton.addEventListener("click", async (event) => {
