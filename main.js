@@ -165,7 +165,7 @@ highScoresButton.addEventListener("click", () => {
   if (HIGH_SCORES.length === 0) {
     const noScores = document.createElement("p");
     noScores.textContent = "No scores yet!";
-    highScoresList.appendChild(noScores);
+    highScoresPage.appendChild(noScores);
   }
 
   HIGH_SCORES.forEach((score) => {
@@ -178,8 +178,14 @@ highScoresButton.addEventListener("click", () => {
 playGameButton.addEventListener("click", async (event) => {
   event.preventDefault();
 
-  if (!username.value || !numberOfQuestionsInput.value) {
-    alert("Please enter a username and number of questions");
+  if (!username.value && !numberOfQuestionsInput.value) {
+    alert("Please enter your name and number of questions");
+    return;
+  } else if (!username.value) {
+    alert("Please enter your name");
+    return;
+  } else if (!numberOfQuestionsInput.value) {
+    alert("Please enter a number of questions");
     return;
   } else if (
     numberOfQuestionsInput.value < 1 ||

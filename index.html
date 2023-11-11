@@ -11,7 +11,7 @@
 
 <body>
   <div id="app">
-    <div id="home-page">
+    <div id="home-page" class="center">
       <h1>Welcome to the Quiz App</h1>
       <p>This is a fun and interactive way to test your knowledge on various topics. Get ready to challenge yourself!
       </p>
@@ -45,31 +45,36 @@
         <button id="high-scores-btn">High Scores</button>
       </div>
     </div>
-    <div id="main-page" class="hidden">
+    <div id="main-page" class="center hidden">
       <button id="main-page-go-back"><i class="fa-solid fa-arrow-left fa-lg"></i></button>
-      <h1>Welcome</h1>
+      <h2>Welcome! Ready for a fun quiz challenge?</h2>
       <form>
-        <label for="player-name">Enter Your Name:</label>
-        <input id="player-name" type="text" />
-        <br />
-        <label for="number-of-questions">Number of Questions:</label>
-        <input id="number-of-questions" type="number" />
-        <br />
-        <label for="category">Select Category:</label>
-        <select id="category"></select>
-        <br />
-        <label for="difficulty">Select Difficulty:</label>
-        <select id="difficulty"></select>
-        <br />
-        <label for="type">Select Type:</label>
-        <select id="type"></select>
-        <br />
+        <div id="input-elements">
+          <label for="player-name">Enter Your Name</label>
+          <input id="player-name" type="text" />
+        </div>
+        <div id="input-elements">
+          <label for="number-of-questions">Number of Questions</label>
+          <input id="number-of-questions" type="number" />
+        </div>
+        <div id="input-elements">
+          <label for="category">Select Category</label>
+          <select id="category"></select>
+        </div>
+        <div id="input-elements">
+          <label for="difficulty">Select Difficulty</label>
+          <select id="difficulty"></select>
+        </div>
+        <div id="input-elements">
+          <label for="type">Select Type</label>
+          <select id="type"></select>
+        </div>
         <input id="play-game-btn" type="submit" value="Play Game" />
       </form>
     </div>
-    <div id="questions" class="hidden"></div>
-    <div id="results" class="hidden"></div>
-    <div id="high-scores" class="hidden">
+    <div id="questions" class="center hidden"></div>
+    <div id="results" class="center hidden"></div>
+    <div id="high-scores" class="center hidden">
       <button id="high-scores-page-go-back"><i class="fa-solid fa-arrow-left fa-lg"></i></button>
       <h2>Current Leaderboard</h2>
       <ol id="high-scores-list"></ol>
