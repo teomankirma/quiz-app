@@ -215,6 +215,11 @@ playGameButton.addEventListener("click", async (event) => {
 
   const response = await fetch(url);
   const { results } = await response.json();
+
+  if (results.length === 0) {
+    alert("No questions found, please try again");
+    return;
+  }
   quizQuestions = results.map((result) => ({
     question: result.question,
     correctAnswer: result.correct_answer,
