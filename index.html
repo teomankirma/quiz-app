@@ -6,6 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quiz App</title>
+  <script src="https://kit.fontawesome.com/38a6783db2.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -39,11 +40,13 @@
           every family." - Kofi Annan</p>
       </blockquote>
 
-      <button id="start-btn">Start</button>
-      <button id="high-scores-btn">High Scores</button>
+      <div id="home-page-btns">
+        <button id="start-btn">Start</button>
+        <button id="high-scores-btn">High Scores</button>
+      </div>
     </div>
     <div id="main-page" class="hidden">
-      <button id="main-page-go-back">Go Back</button>
+      <button id="main-page-go-back"><i class="fa-solid fa-arrow-left fa-lg"></i></button>
       <h1>Welcome</h1>
       <form>
         <label for="player-name">Enter Your Name:</label>
@@ -67,7 +70,7 @@
     <div id="questions" class="hidden"></div>
     <div id="results" class="hidden"></div>
     <div id="high-scores" class="hidden">
-      <button id="high-scores-page-go-back">Go Back</button>
+      <button id="high-scores-page-go-back"><i class="fa-solid fa-arrow-left fa-lg"></i></button>
       <h2>Current Leaderboard</h2>
       <ol id="high-scores-list"></ol>
     </div>
