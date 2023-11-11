@@ -220,10 +220,17 @@ playGameButton.addEventListener("click", async (event) => {
     alert("No questions found, please try again");
     return;
   }
+
+  function decodeHtml(html) {
+    let txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+  }
+
   quizQuestions = results.map((result) => ({
-    question: result.question,
-    correctAnswer: result.correct_answer,
-    incorrectAnswers: result.incorrect_answers,
+    question: decodeHtml(result.question),
+    correctAnswer: decodeHtml(result.correct_answer),
+    incorrectAnswers: result.incorrect_answers.map(decodeHtml),
     type: result.type,
   }));
 
