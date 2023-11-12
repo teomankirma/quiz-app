@@ -6,6 +6,12 @@ html {
   /* overflow-y: hidden; */
 }
 
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Hide Pages */
 
 #home-page.hidden,
@@ -24,6 +30,10 @@ html {
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+#spacer {
+  height: 1.5rem;
 }
 
 #main-page-go-back,
@@ -118,6 +128,11 @@ html {
 #benefits {
   display: flex;
   gap: 1rem;
+}
+
+#benefits img {
+  width: 300px;
+  height: 200px;
 }
 
 /* Home Page */
