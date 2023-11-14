@@ -11,7 +11,7 @@
 
 <body>
   <div id="app">
-    <div id="home-page" class="center">
+    <div id="home-page">
 
       <script>
         let currentIndex = 0;
@@ -41,116 +41,120 @@
         }
       </script>
 
+      <div class="center">
+        <h1>Welcome to the Quiz App</h1>
+        <h4>This is a fun and interactive way to test your knowledge on various topics. Get ready to challenge yourself!
+        </h4>
 
-      <h1>Welcome to the Quiz App</h1>
-      <h4>This is a fun and interactive way to test your knowledge on various topics. Get ready to challenge yourself!
-      </h4>
+        <h4>Remember, the goal is to learn and have fun. Good luck!</h4>
+        <div id="spacer"></div>
 
-      <h4>Remember, the goal is to learn and have fun. Good luck!</h4>
-      <div id="spacer"></div>
-
-      <div id="home-page-btns">
-        <button id="start-btn">Start</button>
-        <button id="high-scores-btn">High Scores</button>
-      </div>
-
-      <div id="spacer"></div>
-
-      <h1>How to Play</h1>
-      <div id="spacer"></div>
-      <div class="slider-container">
-        <div class="slides">
-          <div class="slide">
-            <div class="card">
-              <img src="src/images/start.png" alt="Start Image">
-              <div class="card-content">
-                <div class="card-title">1.</div>
-                <div class="card-description">
-                  Click the 'Start' button to begin the quiz.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="slide">
-            <div class="card">
-              <img src="src/images/categories.png" alt="Categories Image">
-              <div class="card-content">
-                <div class="card-title">2.</div>
-                <div class="card-description">
-                  Choose the number of questions, category, difficulty level, and type of questions.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="slide">
-            <div class="card">
-              <img src="https://placekitten.com/300/200" alt="Card Image">
-              <div class="card-content">
-                <div class="card-title">3.</div>
-                <div class="card-description">
-                  Try to answer all questions correctly to get a high score.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="slide">
-            <div class="card">
-              <img src="https://placekitten.com/300/200" alt="Card Image">
-              <div class="card-content">
-                <div class="card-title">4.</div>
-                <div class="card-description">
-                  Don't forget to check the leaderboard to see how you compare with other players
-                </div>
-              </div>
-            </div>
-          </div>
+        <div id="home-page-btns">
+          <button id="start-btn">Start</button>
+          <button id="high-scores-btn">High Scores</button>
         </div>
-
-        <div class="arrow prev" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></div>
-        <div class="arrow next" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></div>
       </div>
-      <div id="spacer"></div>
 
-      <h1>Benefits of Taking the Quiz</h1>
-      <div id="spacer"></div>
-      <div id="benefits">
-        <div class="card">
-          <img src="src/images/knowledge.jpg" alt="Image by Dariusz
+      <div class="center">
+
+        <h1>How to Play</h1>
+        <div id="spacer"></div>
+        <div class="slider-container">
+          <div class="slides">
+            <div class="slide">
+              <div class="card">
+                <img src="src/images/start.png" alt="Start Image">
+                <div class="card-content">
+                  <div class="card-title">1.</div>
+                  <div class="card-description">
+                    Click the 'Start' button to begin the quiz.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="card">
+                <img src="src/images/categories.png" alt="Categories Image">
+                <div class="card-content">
+                  <div class="card-title">2.</div>
+                  <div class="card-description">
+                    Choose the number of questions, category, difficulty level, and type of questions.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="card">
+                <img src="https://placekitten.com/300/200" alt="Card Image">
+                <div class="card-content">
+                  <div class="card-title">3.</div>
+                  <div class="card-description">
+                    Try to answer all questions correctly to get a high score.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="card">
+                <img src="https://placekitten.com/300/200" alt="Card Image">
+                <div class="card-content">
+                  <div class="card-title">4.</div>
+                  <div class="card-description">
+                    Don't forget to check the leaderboard to see how you compare with other players
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="arrow prev" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></div>
+          <div class="arrow next" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+      </div>
+
+      <div class="center">
+
+        <h1>Benefits of Taking the Quiz</h1>
+        <div id="spacer"></div>
+        <div id="benefits">
+          <div class="card">
+            <img src="src/images/knowledge.jpg" alt="Image by Dariusz
           Sankowski from Pixabay">
-          <div class="card-content">
-            <div class="card-title">Knowledge</div>
-            <div class="card-description">
-              Improve your knowledge in various fields.
+            <div class="card-content">
+              <div class="card-title">Knowledge</div>
+              <div class="card-description">
+                Improve your knowledge in various fields.
+              </div>
             </div>
           </div>
-        </div>
-        <div class="card">
-          <img src="src/images/problem-solving.jpg"
-            alt="Photo by Jeswin Thomas: https://www.pexels.com/photo/man-writing-on-table-3380743/">
-          <div class="card-content">
-            <div class="card-title">Problem-Solving</div>
-            <div class="card-description">
-              Enhance your problem-solving and critical thinking skills.
+          <div class="card">
+            <img src="src/images/problem-solving.jpg"
+              alt="Photo by Jeswin Thomas: https://www.pexels.com/photo/man-writing-on-table-3380743/">
+            <div class="card-content">
+              <div class="card-title">Problem-Solving</div>
+              <div class="card-description">
+                Enhance your problem-solving and critical thinking skills.
+              </div>
             </div>
           </div>
-        </div>
-        <div class="card">
-          <img src="src/images/memory.jpg"
-            alt="Photo by Google DeepMind: https://www.pexels.com/photo/an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-how-machine-learning-is-inspired-by-neuroscience-and-the-human-brain-it-was-created-by-novoto-studio-as-par-17483868/">
-          <div class="card-content">
-            <div class="card-title">Memory</div>
-            <div class="card-description">
-              Boost your memory and cognitive abilities.
+          <div class="card">
+            <img src="src/images/memory.jpg"
+              alt="Photo by Google DeepMind: https://www.pexels.com/photo/an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-how-machine-learning-is-inspired-by-neuroscience-and-the-human-brain-it-was-created-by-novoto-studio-as-par-17483868/">
+            <div class="card-content">
+              <div class="card-title">Memory</div>
+              <div class="card-description">
+                Boost your memory and cognitive abilities.
+              </div>
             </div>
           </div>
-        </div>
-        <div class="card">
-          <img src="src/images/learn.jpg"
-            alt="Photo by Monstera Production: https://www.pexels.com/photo/opened-notebook-with-white-blank-pages-and-pen-on-table-9429448/">
-          <div class="card-content">
-            <div class="card-title">Learn</div>
-            <div class="card-description">
-              Have fun while learning new things.
+          <div class="card">
+            <img src="src/images/learn.jpg"
+              alt="Photo by Monstera Production: https://www.pexels.com/photo/opened-notebook-with-white-blank-pages-and-pen-on-table-9429448/">
+            <div class="card-content">
+              <div class="card-title">Learn</div>
+              <div class="card-description">
+                Have fun while learning new things.
+              </div>
             </div>
           </div>
         </div>

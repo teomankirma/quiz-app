@@ -11,6 +11,18 @@ footer {
   justify-content: center;
 }
 
+button:hover,
+input[type="submit"]:hover {
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+button:active,
+input[type="submit"]:active {
+  transform: scale(0.95);
+  transition: transform 0.1s;
+}
+
 /* Hide Pages */
 
 #home-page.hidden,
@@ -208,7 +220,8 @@ input[type="submit"] {
   margin-bottom: 1rem;
 }
 
-#play-game-btn {
+#play-game-btn,
+#go-home-btn {
   background-color: #41b5be;
   color: white;
   display: block;
@@ -249,21 +262,9 @@ input[type="submit"] {
   font-weight: bold;
 }
 
-thead {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
-th {
-  background-color: #41b5be; /* Add a background color to prevent content from showing through */
-}
-
 #high-scores-table th,
-#high-scores-table td,
-#results-table th,
-#results-table td {
-  padding: 12px 15px;
+#results-table th {
+  /* padding: 12px 15px; */
   text-align: center;
 }
 
@@ -304,6 +305,25 @@ th {
 }
 
 .scrollable-table {
-  max-height: 20em; /* Adjust this value to fit 5 rows */
-  overflow-y: auto;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+.scrollable-table tbody {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  max-height: 20em;
+}
+.scrollable-table thead tr {
+  display: block;
+}
+.scrollable-table thead {
+  background: #41b5be;
+  color: #fff;
+}
+.scrollable-table th,
+.scrollable-table td {
+  padding: 5px;
+  text-align: center;
+  width: 200px;
 }
