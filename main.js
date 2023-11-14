@@ -12,13 +12,15 @@ const resultsPage = document.querySelector("#results");
 const startButton = document.querySelector("#start-btn");
 const highScoresButton = document.querySelector("#high-scores-btn");
 const playGameButton = document.querySelector("#play-game-btn");
-const restartGameButton = document.querySelector("#restart-game-btn");
+// const restartGameButton = document.querySelector("#restart-game-btn");
 
 // Go Back Buttons
 const mainPageGoBack = document.querySelector("#main-page-go-back");
 const highScoresPageGoBack = document.querySelector(
   "#high-scores-page-go-back"
 );
+
+let userAnswers = [];
 
 // Input Fields
 const username = document.querySelector("#player-name");
@@ -78,6 +80,55 @@ function renderQuestion(index) {
     wrongCount.textContent = `Wrong answers: ${wrongAnswers}`;
     resultsPage.appendChild(wrongCount);
 
+    // Create new table
+    const table = document.createElement("table");
+    table.id = "results-table";
+
+    // Create table header
+    const thead = document.createElement("thead");
+    const headerRow = document.createElement("tr");
+
+    const headers = ["Question", "Correct Answer", "Your Answer", "Result"];
+    headers.forEach((header) => {
+      const th = document.createElement("th");
+      th.textContent = header;
+      headerRow.appendChild(th);
+    });
+
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // Create table body
+    const tbody = document.createElement("tbody");
+
+    userAnswers.forEach((answer) => {
+      const row = document.createElement("tr");
+
+      const questionCell = document.createElement("td");
+      questionCell.textContent = answer.question;
+      row.appendChild(questionCell);
+
+      const correctAnswerCell = document.createElement("td");
+      correctAnswerCell.textContent = answer.correctAnswer;
+      row.appendChild(correctAnswerCell);
+
+      const userAnswerCell = document.createElement("td");
+      userAnswerCell.textContent = answer.userAnswer;
+      row.appendChild(userAnswerCell);
+
+      const isCorrectCell = document.createElement("td");
+      isCorrectCell.textContent = answer.isCorrect ? "Correct" : "Wrong";
+      row.appendChild(isCorrectCell);
+
+      tbody.appendChild(row);
+    });
+
+    // Append tbody to table
+    table.appendChild(tbody);
+
+    // Append table to parent element
+    resultsPage.appendChild(table);
+
     HIGH_SCORES.push({
       username: username.value,
       score: percentage,
@@ -87,6 +138,7 @@ function renderQuestion(index) {
 
     correctAnswers = 0;
     wrongAnswers = 0;
+    userAnswers = [];
 
     const goHomeButton = document.createElement("button");
     goHomeButton.textContent = "Go Home";
@@ -120,14 +172,24 @@ function renderQuestion(index) {
       "click",
       ((currentIndex) => {
         return () => {
+          let isCorrect;
           if (answerButton.textContent === currentQuestion.correctAnswer) {
             // handle correct answer
             correctAnswers++;
+            isCorrect = true;
           } else {
             // handle incorrect answer
             wrongAnswers++;
+            isCorrect = false;
           }
 
+          // Push the user's answer into the userAnswers array
+          userAnswers.push({
+            question: currentQuestion.question,
+            userAnswer: answerButton.textContent,
+            correctAnswer: currentQuestion.correctAnswer,
+            isCorrect,
+          });
           // render the next question
           renderQuestion(currentIndex + 1);
         };

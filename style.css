@@ -222,7 +222,8 @@ input[type="submit"] {
 
 /* High Scores */
 
-#high-scores-table {
+#high-scores-table,
+#results-table {
   border-collapse: collapse;
   margin: 25px 0;
   font-size: 0.9em;
@@ -232,38 +233,46 @@ input[type="submit"] {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-#high-scores-table thead tr {
-  background-color: #009879;
+#high-scores-table thead tr,
+#results-table thead tr {
+  background-color: #41b5be;
   color: #ffffff;
   text-align: left;
   font-weight: bold;
 }
 
 #high-scores-table th,
-#high-scores-table td {
+#high-scores-table td,
+#results-table th,
+#results-table td {
   padding: 12px 15px;
   text-align: center;
 }
 
-#high-scores-table tbody tr {
+#high-scores-table tbody tr,
+#results-table tbody tr {
   border-bottom: 1px solid #dddddd;
 }
 
-#high-scores-table tbody tr:nth-of-type(odd) {
+#high-scores-table tbody tr:nth-of-type(odd),
+#results-table tbody tr:nth-of-type(odd) {
   background-color: #ffffff;
   color: black;
 }
 
-#high-scores-table tbody tr:nth-of-type(even) {
+#high-scores-table tbody tr:nth-of-type(even),
+#results-table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
   color: black;
 }
 
-#high-scores-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+#high-scores-table tbody tr:last-of-type,
+#results-table tbody tr:last-of-type {
+  border-bottom: 2px solid #41b5be;
 }
 
-#high-scores-table tbody tr.active-row {
+#high-scores-table tbody tr.active-row,
+#results-table tbody tr.active-row {
   font-weight: bold;
-  color: #009879;
+  color: #41b5be;
 }
