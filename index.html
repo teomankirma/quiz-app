@@ -188,7 +188,16 @@
     <div id="high-scores" class="center hidden">
       <button id="high-scores-page-go-back"><i class="fa-solid fa-arrow-left fa-lg"></i></button>
       <h2>Current Leaderboard</h2>
-      <ol id="high-scores-list"></ol>
+      <table id="high-scores-table" class="hide-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
   </div>
   <script type="module" src="/main.js"></script>

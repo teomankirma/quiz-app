@@ -159,19 +159,41 @@ highScoresButton.addEventListener("click", () => {
   homePage.classList.add("hidden");
   highScoresPage.classList.remove("hidden");
 
-  const highScoresList = document.querySelector("#high-scores-list");
-  highScoresList.innerHTML = "";
+  const highScoresTable = document.querySelector("#high-scores-table");
+  const highScoresTableBody = document.querySelector(
+    "#high-scores-table tbody"
+  );
+
+  highScoresTableBody.innerHTML = "";
 
   if (HIGH_SCORES.length === 0) {
     const noScores = document.createElement("p");
     noScores.textContent = "No scores yet!";
     highScoresPage.appendChild(noScores);
+  } else {
+    highScoresTable.classList.remove("hide-table");
   }
 
-  HIGH_SCORES.forEach((score) => {
-    const scoreItem = document.createElement("li");
-    scoreItem.textContent = `${score.username}: ${score.score}%`;
-    highScoresList.appendChild(scoreItem);
+  HIGH_SCORES.forEach((score, index) => {
+    const scoreRow = document.createElement("tr");
+
+    if (index === 0) {
+      scoreRow.classList.add("active-row");
+    }
+
+    const rankCell = document.createElement("td");
+    rankCell.textContent = index + 1;
+    scoreRow.appendChild(rankCell);
+
+    const usernameCell = document.createElement("td");
+    usernameCell.textContent = score.username;
+    scoreRow.appendChild(usernameCell);
+
+    const scoreCell = document.createElement("td");
+    scoreCell.textContent = `${score.score}%`;
+    scoreRow.appendChild(scoreCell);
+
+    highScoresTableBody.appendChild(scoreRow);
   });
 });
 
