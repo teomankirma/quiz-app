@@ -55,7 +55,7 @@ function renderQuestion(index) {
       (correctAnswers / quizQuestions.length) * 100
     );
 
-    const endOfQuizText = document.createElement("h2");
+    const endOfQuizText = document.createElement("h1");
 
     if (percentage >= 70) {
       endOfQuizText.textContent =
@@ -68,15 +68,15 @@ function renderQuestion(index) {
     }
     resultsPage.appendChild(endOfQuizText);
 
-    const userScore = document.createElement("h3");
+    const userScore = document.createElement("h2");
     userScore.textContent = `Your score: ${percentage}%`;
     resultsPage.appendChild(userScore);
 
-    const correctCount = document.createElement("p");
+    const correctCount = document.createElement("h3");
     correctCount.textContent = `Correct answers: ${correctAnswers}`;
     resultsPage.appendChild(correctCount);
 
-    const wrongCount = document.createElement("p");
+    const wrongCount = document.createElement("h3");
     wrongCount.textContent = `Wrong answers: ${wrongAnswers}`;
     resultsPage.appendChild(wrongCount);
 
@@ -117,7 +117,9 @@ function renderQuestion(index) {
       row.appendChild(userAnswerCell);
 
       const isCorrectCell = document.createElement("td");
-      isCorrectCell.textContent = answer.isCorrect ? "Correct" : "Wrong";
+      isCorrectCell.innerHTML = answer.isCorrect
+        ? '<i style="color:green;" class="fa-solid fa-check"></i>'
+        : '<i style="color:red;" class="fa-solid fa-xmark"></i>';
       row.appendChild(isCorrectCell);
 
       tbody.appendChild(row);
@@ -126,8 +128,12 @@ function renderQuestion(index) {
     // Append tbody to table
     table.appendChild(tbody);
 
+    const tableWrapper = document.createElement("div");
+    tableWrapper.className = "scrollable-table";
+    tableWrapper.appendChild(table);
+
     // Append table to parent element
-    resultsPage.appendChild(table);
+    resultsPage.appendChild(tableWrapper);
 
     HIGH_SCORES.push({
       username: username.value,
@@ -140,7 +146,12 @@ function renderQuestion(index) {
     wrongAnswers = 0;
     userAnswers = [];
 
+    const spacer = document.createElement("div");
+    spacer.id = "spacer";
+    resultsPage.appendChild(spacer);
+
     const goHomeButton = document.createElement("button");
+    goHomeButton.id = "go-home-btn";
     goHomeButton.textContent = "Go Home";
     goHomeButton.addEventListener("click", () => {
       resultsPage.classList.add("hidden");
@@ -158,6 +169,10 @@ function renderQuestion(index) {
   const questionText = document.createElement("h2");
   questionText.textContent = currentQuestion.question;
   questionDiv.appendChild(questionText);
+
+  const spacer = document.createElement("div");
+  spacer.id = "spacer";
+  questionDiv.appendChild(spacer);
 
   const answers =
     currentQuestion.type === "multiple"
@@ -345,6 +360,33 @@ highScoresPageGoBack.addEventListener("click", () => {
   highScoresPage.classList.add("hidden");
   homePage.classList.remove("hidden");
 });
+
+const apiUrl = `https://api.api-ninjas.com/v1/quotes?category=happiness`;
+
+const fetchData = async () => {
+  try {
+    const response = await fetch(apiUrl, {
+      method: "GET",
+      headers: {
+        "X-Api-Key": "ban04tUzZ5H8YOLUj3Jy/g==Q3i2BihBZLM3ZWhO",
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok.");
+    }
+
+    const result = await response.json();
+
+    const blockquote = document.querySelector("#quote");
+    blockquote.innerHTML = `<p>"${result[0].quote}" - ${result[0].author}</p>`;
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+};
+
+// fetchData();
 
 // restartGameButton.addEventListener("click", () => {
 //   questionsPage.classList.add("hidden");

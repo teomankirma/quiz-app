@@ -36,7 +36,7 @@ footer {
 }
 
 #spacer {
-  height: 1.5rem;
+  height: 2rem;
 }
 
 #main-page-go-back,
@@ -89,8 +89,7 @@ footer {
   transform: translateY(-50%);
   font-size: 24px;
   cursor: pointer;
-  color: #333;
-  background-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
   padding: 10px;
   border-radius: 50%;
   display: flex;
@@ -169,17 +168,23 @@ input[type="submit"] {
 }
 
 #start-btn {
-  background-color: #33dd8f;
+  background-color: #41b5be;
   color: white;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 #high-scores-btn {
-  background-color: #f49846;
+  background-color: #c62ca5;
   color: white;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 #home-page-btns {
+  display: flex;
   flex-direction: row;
+  gap: 1rem;
 }
 
 /* Main Page */
@@ -204,12 +209,15 @@ input[type="submit"] {
 }
 
 #play-game-btn {
-  background-color: #33dd8f;
+  background-color: #41b5be;
   color: white;
   display: block;
   margin: auto;
+  margin-top: 2rem;
   padding: 1rem;
   font-size: 1rem;
+  font-weight: bold;
+  width: 300px;
 }
 /* Questions */
 
@@ -239,6 +247,16 @@ input[type="submit"] {
   color: #ffffff;
   text-align: left;
   font-weight: bold;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+th {
+  background-color: #41b5be; /* Add a background color to prevent content from showing through */
 }
 
 #high-scores-table th,
@@ -275,4 +293,17 @@ input[type="submit"] {
 #results-table tbody tr.active-row {
   font-weight: bold;
   color: #41b5be;
+}
+
+#go-home-btn {
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #41b5be;
+  color: white;
+  width: 300px;
+}
+
+.scrollable-table {
+  max-height: 20em; /* Adjust this value to fit 5 rows */
+  overflow-y: auto;
 }
