@@ -166,8 +166,14 @@ highScoresButton.addEventListener("click", () => {
 
   highScoresTableBody.innerHTML = "";
 
+  const noScores = document.getElementById("no-scores");
+  if (noScores) {
+    noScores.remove();
+  }
+
   if (HIGH_SCORES.length === 0) {
     const noScores = document.createElement("p");
+    noScores.id = "no-scores";
     noScores.textContent = "No scores yet!";
     highScoresPage.appendChild(noScores);
   } else {
