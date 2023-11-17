@@ -5,6 +5,10 @@ html {
   color: white;
 }
 
+body {
+  margin: 0;
+}
+
 footer {
   display: flex;
   align-items: center;
@@ -167,8 +171,7 @@ input[type="submit"]:active {
 /* Home Page */
 
 #home-page {
-  padding: 2rem 0;
-  height: auto;
+  height: 100vh;
 }
 
 button,

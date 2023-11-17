@@ -392,3 +392,35 @@ const fetchData = async () => {
 //   questionsPage.classList.add("hidden");
 //   mainPage.classList.remove("hidden");
 // });
+
+document
+  .getElementById("first-page-scroll-down")
+  .addEventListener("click", function () {
+    document
+      .getElementById("home-page-second")
+      .scrollIntoView({ behavior: "smooth" });
+  });
+
+document
+  .getElementById("second-page-scroll-down")
+  .addEventListener("click", function () {
+    document
+      .getElementById("home-page-third")
+      .scrollIntoView({ behavior: "smooth" });
+  });
+
+document
+  .getElementById("second-page-scroll-up")
+  .addEventListener("click", function () {
+    document
+      .getElementById("home-page-first")
+      .scrollIntoView({ behavior: "smooth" });
+  });
+
+document
+  .getElementById("third-page-scroll-up")
+  .addEventListener("click", function () {
+    document
+      .getElementById("home-page-second")
+      .scrollIntoView({ behavior: "smooth" });
+  });

@@ -7,7 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quiz App</title>
   <script src="https://kit.fontawesome.com/38a6783db2.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 </head>
+
+
 
 <body>
   <div id="app">
@@ -41,7 +44,9 @@
         }
       </script>
 
-      <div class="center">
+      <div id="home-page-first" class="center" style="position: relative;">
+        <dotlottie-player src="https://lottie.host/8c039c28-f7b1-41ec-beab-0a3526c54f7b/M4Nl13xoHT.json"
+          background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
         <h1>Welcome to the Quiz App</h1>
         <h4>This is a fun and interactive way to test your knowledge on various topics. Get ready to challenge yourself!
         </h4>
@@ -53,9 +58,21 @@
           <button id="start-btn">Start</button>
           <button id="high-scores-btn">High Scores</button>
         </div>
+        <div id="spacer"></div>
+        <dotlottie-player id="first-page-scroll-down"
+          src="https://lottie.host/30c3770a-49cc-44e7-b6e2-b4bf6ae90eed/jWaD3kPH5k.json" background="transparent"
+          speed="1"
+          style="width: 100px; height: 100px; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); cursor: pointer;"
+          loop autoplay></dotlottie-player>
       </div>
 
-      <div class="center">
+      <div class="center" id="home-page-second" style="position: relative;">
+
+        <dotlottie-player id="second-page-scroll-up"
+          src="https://lottie.host/a1d7d734-019b-46e1-8694-ebce9270b428/cAoFfMM9AP.json" background="transparent"
+          speed="1"
+          style="width: 100px; height: 100px; position: absolute; top: 0; left: 50%; transform: translateX(-50%); cursor: pointer;"
+          loop autoplay></dotlottie-player>
 
         <h1>How to Play</h1>
         <div id="spacer"></div>
@@ -110,16 +127,25 @@
           <div class="arrow prev" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></div>
           <div class="arrow next" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></div>
         </div>
+        <dotlottie-player id="second-page-scroll-down"
+          src="https://lottie.host/30c3770a-49cc-44e7-b6e2-b4bf6ae90eed/jWaD3kPH5k.json" background="transparent"
+          speed="1"
+          style="width: 100px; height: 100px; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); cursor: pointer;"
+          loop autoplay></dotlottie-player>
       </div>
-
-      <div class="center">
+      <div class="center" id="home-page-third" style="position: relative;">
+        <dotlottie-player id="third-page-scroll-up"
+          src="https://lottie.host/a1d7d734-019b-46e1-8694-ebce9270b428/cAoFfMM9AP.json" background="transparent"
+          speed="1"
+          style="width: 100px; height: 100px; position: absolute; top: 0; left: 50%; transform: translateX(-50%); cursor: pointer;"
+          loop autoplay></dotlottie-player>
 
         <h1>Benefits of Taking the Quiz</h1>
         <div id="spacer"></div>
         <div id="benefits">
           <div class="card">
             <img src="src/images/knowledge.jpg" alt="Image by Dariusz
-          Sankowski from Pixabay">
+            Sankowski from Pixabay">
             <div class="card-content">
               <div class="card-title">Knowledge</div>
               <div class="card-description">
@@ -160,50 +186,52 @@
         </div>
       </div>
     </div>
-    <div id="main-page" class="center hidden">
-      <button id="main-page-go-back"><i class="fa-solid fa-arrow-left fa-lg"></i></button>
-      <h2>Welcome! Ready for a fun quiz challenge?</h2>
-      <div id="spacer"></div>
-      <form>
-        <div id="input-elements">
-          <label for="player-name">Enter Your Name</label>
-          <input id="player-name" type="text" />
-        </div>
-        <div id="input-elements">
-          <label for="number-of-questions">Number of Questions</label>
-          <input id="number-of-questions" type="number" />
-        </div>
-        <div id="input-elements">
-          <label for="category">Select Category</label>
-          <select id="category"></select>
-        </div>
-        <div id="input-elements">
-          <label for="difficulty">Select Difficulty</label>
-          <select id="difficulty"></select>
-        </div>
-        <div id="input-elements">
-          <label for="type">Select Type</label>
-          <select id="type"></select>
-        </div>
-        <input id="play-game-btn" type="submit" value="Play Game" />
-      </form>
-    </div>
-    <div id="questions" class="center hidden"></div>
-    <div id="results" class="center hidden"></div>
-    <div id="high-scores" class="center hidden">
-      <button id="high-scores-page-go-back"><i class="fa-solid fa-arrow-left fa-lg"></i></button>
-      <h1>Current Leaderboard</h1>
-      <table id="high-scores-table" class="hide-table">
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Name</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
+  </div>
+
+  <div id="main-page" class="center hidden">
+    <button id="main-page-go-back"><i class="fa-solid fa-arrow-left fa-lg"></i></button>
+    <h2>Welcome! Ready for a fun quiz challenge?</h2>
+    <div id="spacer"></div>
+    <form>
+      <div id="input-elements">
+        <label for="player-name">Enter Your Name</label>
+        <input id="player-name" type="text" />
+      </div>
+      <div id="input-elements">
+        <label for="number-of-questions">Number of Questions</label>
+        <input id="number-of-questions" type="number" />
+      </div>
+      <div id="input-elements">
+        <label for="category">Select Category</label>
+        <select id="category"></select>
+      </div>
+      <div id="input-elements">
+        <label for="difficulty">Select Difficulty</label>
+        <select id="difficulty"></select>
+      </div>
+      <div id="input-elements">
+        <label for="type">Select Type</label>
+        <select id="type"></select>
+      </div>
+      <input id="play-game-btn" type="submit" value="Play Game" />
+    </form>
+  </div>
+  <div id="questions" class="center hidden"></div>
+  <div id="results" class="center hidden"></div>
+  <div id="high-scores" class="center hidden">
+    <button id="high-scores-page-go-back"><i class="fa-solid fa-arrow-left fa-lg"></i></button>
+    <h1>Current Leaderboard</h1>
+    <table id="high-scores-table" class="hide-table">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
   </div>
   <script type="module" src="/main.js"></script>
 </body>
