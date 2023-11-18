@@ -392,7 +392,7 @@ const fetchData = async () => {
   }
 };
 
-// fetchData();
+fetchData();
 
 // restartGameButton.addEventListener("click", () => {
 //   questionsPage.classList.add("hidden");
