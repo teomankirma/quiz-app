@@ -244,89 +244,53 @@ input[type="submit"] {
   margin-bottom: 20px;
 }
 
-/* High Scores */
+.scrollable-table {
+  width: 50%;
+  max-height: 300px; /* Adjust as needed */
+  overflow-y: auto;
+  display: block;
+}
 
 #high-scores-table,
 #results-table {
+  width: 100%;
   border-collapse: collapse;
-  margin: 25px 0;
-  font-size: 0.9em;
-  min-width: 400px;
-  border-radius: 5px 5px 0 0;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-#high-scores-table thead tr,
-#results-table thead tr {
-  background-color: #41b5be;
-  color: #ffffff;
-  text-align: left;
-  font-weight: bold;
+  text-align: center;
 }
 
 #high-scores-table th,
 #results-table th {
-  /* padding: 12px 15px; */
-  text-align: center;
+  background-color: #41b5be;
+  color: white;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
 }
 
-#high-scores-table tbody tr,
-#results-table tbody tr {
-  border-bottom: 1px solid #dddddd;
+#high-scores-table td,
+#results-table td {
+  padding: 1rem;
+  color: #333;
 }
 
-#high-scores-table tbody tr:nth-of-type(odd),
-#results-table tbody tr:nth-of-type(odd) {
-  background-color: #ffffff;
-  color: black;
+#high-scores-table tr:nth-child(even),
+#results-table tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
-#high-scores-table tbody tr:nth-of-type(even),
-#results-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
-  color: black;
+#high-scores-table tr:nth-child(odd),
+#results-table tr:nth-child(odd) {
+  background-color: #fff;
 }
 
-#high-scores-table tbody tr:last-of-type,
-#results-table tbody tr:last-of-type {
-  border-bottom: 2px solid #41b5be;
+#high-scores-table tr:hover,
+#results-table tr:hover {
+  background-color: #ddd;
 }
-
-#high-scores-table tbody tr.active-row,
-#results-table tbody tr.active-row {
-  font-weight: bold;
-  color: #41b5be;
-}
-
 #go-home-btn {
   font-size: 1rem;
   font-weight: bold;
   background-color: #41b5be;
   color: white;
   width: 300px;
-}
-
-.scrollable-table {
-  table-layout: fixed;
-  border-collapse: collapse;
-}
-.scrollable-table tbody {
-  display: block;
-  width: 100%;
-  overflow: auto;
-  max-height: 20em;
-}
-.scrollable-table thead tr {
-  display: block;
-}
-.scrollable-table thead {
-  background: #41b5be;
-  color: #fff;
-}
-.scrollable-table th,
-.scrollable-table td {
-  padding: 5px;
-  text-align: center;
-  width: 200px;
 }
