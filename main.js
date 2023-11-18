@@ -7,6 +7,7 @@ const mainPage = document.querySelector("#main-page");
 const questionsPage = document.querySelector("#questions");
 const highScoresPage = document.querySelector("#high-scores");
 const resultsPage = document.querySelector("#results");
+const questionDiv = document.getElementById("questions");
 
 // Buttons
 const startButton = document.querySelector("#start-btn");
@@ -162,7 +163,6 @@ function renderQuestion(index) {
     return;
   }
 
-  const questionDiv = document.getElementById("questions");
   questionDiv.innerHTML = "";
 
   const currentQuestion = quizQuestions[index];
@@ -251,7 +251,8 @@ highScoresButton.addEventListener("click", () => {
   if (HIGH_SCORES.length === 0) {
     const noScores = document.createElement("p");
     noScores.id = "no-scores";
-    noScores.textContent = "No scores yet!";
+    noScores.innerHTML = `
+    <dotlottie-player src="https://lottie.host/0ef2fce3-b820-4a1e-a102-41cc3822ef37/9dR2ptHedo.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>`;
     highScoresPage.appendChild(noScores);
   } else {
     highScoresTable.classList.remove("hide-table");
