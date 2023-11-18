@@ -83,6 +83,10 @@ function renderQuestion(index) {
     wrongCount.textContent = `Wrong answers: ${wrongAnswers}`;
     resultsPage.appendChild(wrongCount);
 
+    const spacer_first = document.createElement("div");
+    spacer_first.id = "spacer";
+    resultsPage.appendChild(spacer_first);
+
     // Create new table
     const table = document.createElement("table");
     table.id = "results-table";
@@ -150,9 +154,9 @@ function renderQuestion(index) {
     wrongAnswers = 0;
     userAnswers = [];
 
-    const spacer = document.createElement("div");
-    spacer.id = "spacer";
-    resultsPage.appendChild(spacer);
+    const spacer_second = document.createElement("div");
+    spacer_second.id = "spacer";
+    resultsPage.appendChild(spacer_second);
 
     const goHomeButton = document.createElement("button");
     goHomeButton.id = "go-home-btn";
