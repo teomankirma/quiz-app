@@ -1,5 +1,7 @@
 import "./style.css";
-import { CATEGORIES, DIFFICULTIES, TYPES, HIGH_SCORES } from "./src/constants";
+import { CATEGORIES, DIFFICULTIES, TYPES } from "./src/constants";
+
+let HIGH_SCORES = JSON.parse(localStorage.getItem("HIGH_SCORES")) || [];
 
 // Pages
 const homePage = document.querySelector("#home-page");
@@ -142,6 +144,7 @@ function renderQuestion(index) {
     });
 
     HIGH_SCORES.sort((a, b) => b.score - a.score);
+    localStorage.setItem("HIGH_SCORES", JSON.stringify(HIGH_SCORES));
 
     correctAnswers = 0;
     wrongAnswers = 0;
@@ -257,6 +260,8 @@ highScoresButton.addEventListener("click", () => {
   } else {
     highScoresTable.classList.remove("hide-table");
   }
+
+  HIGH_SCORES = JSON.parse(localStorage.getItem("HIGH_SCORES")) || [];
 
   HIGH_SCORES.forEach((score, index) => {
     const scoreRow = document.createElement("tr");
