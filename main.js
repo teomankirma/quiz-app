@@ -423,7 +423,7 @@ document
   .getElementById("third-page-scroll-up")
   .addEventListener("click", function () {
     document
-      .getElementById("home-page-second")
+      .getElementById("home-page-first")
       .scrollIntoView({ behavior: "smooth" });
   });
 

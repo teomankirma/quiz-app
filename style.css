@@ -243,6 +243,11 @@ input[type="submit"] {
   background-color: #ddd;
 }
 
+#high-scores-table tr:first-child td {
+  color: gold;
+  font-weight: bold;
+}
+
 /* Default Height For Some of the Pages */
 
 #main-page,
