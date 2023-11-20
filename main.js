@@ -19,7 +19,6 @@ const questionDiv = document.getElementById("questions");
 const startButton = document.querySelector("#start-btn");
 const highScoresButton = document.querySelector("#high-scores-btn");
 const playGameButton = document.querySelector("#play-game-btn");
-// const restartGameButton = document.querySelector("#restart-game-btn");
 
 // Go Back Buttons
 const mainPageGoBack = document.querySelector("#main-page-go-back");
@@ -430,8 +429,3 @@ document
 
 // Call fetchData function
 fetchData();
-
-// restartGameButton.addEventListener("click", () => {
-//   questionsPage.classList.add("hidden");
-//   mainPage.classList.remove("hidden");
-// });
