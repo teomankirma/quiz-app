@@ -38,5 +38,3 @@ export const TYPES = [
   { name: "Multiple Choice", value: "multiple" },
   { name: "True / False", value: "boolean" },
 ];
-
-export const HIGH_SCORES = [];

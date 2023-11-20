@@ -1,7 +1,11 @@
 import "./style.css";
 import { CATEGORIES, DIFFICULTIES, TYPES } from "./src/constants";
 
+// Get HIGH_SCORES from localStorage if it exists, otherwise set it to an empty array
 let HIGH_SCORES = JSON.parse(localStorage.getItem("HIGH_SCORES")) || [];
+
+// API URL (for quotes)
+const apiUrl = `https://api.api-ninjas.com/v1/quotes?category=happiness`;
 
 // Pages
 const homePage = document.querySelector("#home-page");
@@ -23,6 +27,10 @@ const highScoresPageGoBack = document.querySelector(
   "#high-scores-page-go-back"
 );
 
+// Global Variables
+let quizQuestions = [];
+let correctAnswers = 0;
+let wrongAnswers = 0;
 let userAnswers = [];
 
 // Input Fields
@@ -32,6 +40,7 @@ const categoryOptions = document.querySelector("#category");
 const difficultyOptions = document.querySelector("#difficulty");
 const typeOptions = document.querySelector("#type");
 
+// Populate select options
 categoryOptions.innerHTML = CATEGORIES.map(
   (category) => `<option value="${category.name}">${category.name}</option>`
 ).join("");
@@ -219,15 +228,30 @@ function renderQuestion(index) {
     );
   });
 }
+const fetchData = async () => {
+  try {
+    const response = await fetch(apiUrl, {
+      method: "GET",
+      headers: {
+        "X-Api-Key": "ban04tUzZ5H8YOLUj3Jy/g==Q3i2BihBZLM3ZWhO",
+        "Content-Type": "application/json",
+      },
+    });
 
-// Global Variables
+    if (!response.ok) {
+      throw new Error("Network response was not ok.");
+    }
 
-let quizQuestions = [];
-let correctAnswers = 0;
-let wrongAnswers = 0;
+    const result = await response.json();
+
+    const blockquote = document.querySelector("#quote");
+    blockquote.innerHTML = `<p>"${result[0].quote}" - ${result[0].author}</p>`;
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+};
 
 // Event Listeners
-
 startButton.addEventListener("click", () => {
   homePage.classList.add("hidden");
   mainPage.classList.remove("hidden");
@@ -371,38 +395,7 @@ highScoresPageGoBack.addEventListener("click", () => {
   homePage.classList.remove("hidden");
 });
 
-const apiUrl = `https://api.api-ninjas.com/v1/quotes?category=happiness`;
-
-const fetchData = async () => {
-  try {
-    const response = await fetch(apiUrl, {
-      method: "GET",
-      headers: {
-        "X-Api-Key": "ban04tUzZ5H8YOLUj3Jy/g==Q3i2BihBZLM3ZWhO",
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok.");
-    }
-
-    const result = await response.json();
-
-    const blockquote = document.querySelector("#quote");
-    blockquote.innerHTML = `<p>"${result[0].quote}" - ${result[0].author}</p>`;
-  } catch (error) {
-    console.error("Error:", error.message);
-  }
-};
-
-fetchData();
-
-// restartGameButton.addEventListener("click", () => {
-//   questionsPage.classList.add("hidden");
-//   mainPage.classList.remove("hidden");
-// });
-
+// Scroll to next or previous page
 document
   .getElementById("first-page-scroll-down")
   .addEventListener("click", function () {
@@ -434,3 +427,11 @@ document
       .getElementById("home-page-second")
       .scrollIntoView({ behavior: "smooth" });
   });
+
+// Call fetchData function
+fetchData();
+
+// restartGameButton.addEventListener("click", () => {
+//   questionsPage.classList.add("hidden");
+//   mainPage.classList.remove("hidden");
+// });
